@@ -36,4 +36,24 @@ public class HomeController {
         messageRepository.save(message);
         return "redirect:/";
     }
+
+    @RequestMapping("/update/{id}")
+    public String updateTask(@PathVariable("id") long id, Model model) {
+        model.addAttribute("message", messageRepository.findById(id).get());
+        return "newmessage";
+    }
+
+    @RequestMapping("/detail/{id}")
+    public String detailTask(@PathVariable("id") long id, Model model) {
+        model.addAttribute("message", messageRepository.findById(id).get());
+        return "show";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delTask(@PathVariable("id") long id) {
+        messageRepository.deleteById(id);
+        return "redirect:/";
+    }
+
+
 }

@@ -22,6 +22,14 @@ public class Message {
     @NotNull
     private String sentBy;
 
+    public Message() {}
+
+    public Message(@NotNull String content, @NotNull String postedDate, @NotNull String sentBy) {
+        this.content = content;
+        this.postedDate = postedDate;
+        this.sentBy = sentBy;
+    }
+
     public long getId() {
         return id;
     }
