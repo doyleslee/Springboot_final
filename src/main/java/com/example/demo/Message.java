@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -14,6 +15,10 @@ public class Message {
     private long id;
 
     @NotNull
+    private String title;
+
+    @NotNull
+    @Size(max=500)
     private String content;
 
     @NotNull
@@ -21,6 +26,8 @@ public class Message {
 
     @NotNull
     private String sentBy;
+
+    private String picture;
 
     public Message() {}
 
@@ -60,5 +67,21 @@ public class Message {
 
     public void setSentBy(String sentBy) {
         this.sentBy = sentBy;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

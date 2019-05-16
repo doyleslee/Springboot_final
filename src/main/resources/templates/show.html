@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" margin="0px" height="100%">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,12 +9,18 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous" />
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="stylecity-show.css"
+    />
 </head>
 <body>
 
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Blog</a>
+    <a class="navbar-brand" href="#">
+        <img src="https://res.cloudinary.com/doyle/image/upload/v1558026784/Blog/pandawave_kejtsf.jpg" width="35" height="35"/>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,12 +36,55 @@
     </div>
 </nav>
 
-Message: <br>
-<p th:text="${message.content}"></p></br>
-Sent By: <span th:text="${message.sentBy}" ></span><br />
-Posted: <span th:text="${message.postedDate}" ></span><br />
+<!--
+<div class="card" style="width: 1100px">
+            <span class="border border-dark">
 
-<a th:href="@{/delete/{id}(id=${message.id})}">Delete this post</a>
+
+                <img th:src="${message.picture}" th:class="card-img-top" th:alt="..." th:width="500"
+                     th:height="350"/>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${message.title}"/>
+                    <p class="card-text" th:text="${message.content}"/>
+                </div>
+                <div class="card-footer">
+                    <small span class="text-muted" th:text="'Sent by: '+ ${message.sentBy}"/>
+                    </br>
+                    <small span class="text-muted" th:text="'Posted on : ' + ${message.postedDate}"/>
+                    </br>
+                    <a class="text-muted" th:href="@{/detail/{id}(id=${message.id})}">Details</a>
+                    <a class="text-muted" th:href="@{/delete/{id}(id=${message.id})}">Delete</a>
+                </div>
+            </span>
+</div>
+-->
+
+<div class="mx-auto card" style="width: 1100px;">
+    <span class="border border-dark">
+    <div class="row no-gutters">
+        <div class="col-md-8">
+            <div th:if="${message.picture} != null">
+                <img th:src="${message.picture}" th:class="card-img" th:alt="..." th:width="800"/>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${message.title}"/>
+                <p class="card-text" th:text="${message.content}"/>
+                <p class="card-text">
+                    <small span class="text-muted" th:text="'Sent by: '+ ${message.sentBy}"/>
+                    </br>
+                    <small span class="text-muted" th:text="'Posted on : ' + ${message.postedDate}"/>
+                    </br></br></br>
+                    <a class="text-muted" th:href="@{/update/{id}(id=${message.id})}"><small>Edit</small></a> -
+                    <a class="text-muted" th:href="@{/delete/{id}(id=${message.id})}"><small>Delete</small></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    </span>
+</div>
+
 
 
 <!-- JavaScript scripts -->
