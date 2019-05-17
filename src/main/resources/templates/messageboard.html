@@ -39,7 +39,7 @@
 
 <div class="card-deck w-97 m-2 ">
     <div th:each="message : ${messages}">
-        <div class="card m-4 rounded shadow-lg" style="max-width: 500px">
+        <div class="card m-4 rounded shadow" style="max-width: 500px">
             <span class="border border-dark">
                 <img th:src="${message.picture}" th:class="card-img-top" th:alt="..." th:width="500"
                      th:height="350"/>
